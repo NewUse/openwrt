@@ -124,6 +124,19 @@ define Device/mikrotik_routerboard-922uags-5hpacd
 endef
 TARGET_DEVICES += mikrotik_routerboard-922uags-5hpacd
 
+
+define Device/mikrotik_routerboard-951ui-2hnd
+  $(Device/mikrotik)
+  SOC := ar9344
+  DEVICE_MODEL := RouterBOARD 951Ui-2HnD
+  BOARD_NAME := routerboard
+  IMAGE/sysupgrade.bin = append-kernel | kernel2minor -s 2048 -e -c | \
+	sysupgrade-tar kernel=$$$$@ | append-metadata
+  DEVICE_PACKAGES += kmod-usb2 nand-utils
+  SUPPORTED_DEVICES += rb-951ui-2hnd
+endef
+TARGET_DEVICES += mikrotik_routerboard-951ui-2hnd
+
 # fake rootfs is mandatory, pad-offset 129 equals (2 * uimage_header + 0xff)
 define Device/netgear_ath79_nand
   DEVICE_VENDOR := NETGEAR

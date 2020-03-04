@@ -25,7 +25,8 @@ platform_do_upgrade() {
 	local board=$(board_name)
 
 	case "$board" in
-	mikrotik,routerboard-922uags-5hpacd)
+	mikrotik,routerboard-922uags-5hpacd\|
+	mikrotik,routerboard-951ui-2hnd)
 		platform_do_upgrade_mikrotik_nand "$1"
 		;;
 	glinet,gl-ar300m-nand|\

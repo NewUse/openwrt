@@ -3,12 +3,16 @@
 [ -e /lib/firmware/$FIRMWARE ] && exit 0
 
 . /lib/functions/caldata.sh
+. /lib/functions/mikrotik-caldata.sh
 
 board=$(board_name)
 
 case "$FIRMWARE" in
 "ath9k-eeprom-ahb-18100000.wmac.bin")
 	case $board in
+	mikrotik,routerboard-951ui-2hnd)
+		mikrotik_caldata_extract "art" 0x5000 0x844
+		;;
 	netgear,wndr3700-v4|\
 	netgear,wndr4300|\
 	netgear,wndr4300-v2|\
@@ -32,6 +36,7 @@ case "$FIRMWARE" in
 	netgear,wndr4500-v3)
 		caldata_extract "caldata" 0x5000 0x440
 		;;
+	
 	*)
 		caldata_die "board $board is not supported yet"
 		;;

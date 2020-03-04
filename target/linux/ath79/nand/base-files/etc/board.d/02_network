@@ -9,7 +9,8 @@ ath79_setup_interfaces()
 
 	case "$board" in
 	aerohive,hiveap-121|\
-	mikrotik,routerboard-922uags-5hpacd)
+	mikrotik,routerboard-922uags-5hpacd|\
+	mikrotik,routerboard-951ui-2hnd)
 		ucidef_set_interface_lan "eth0"
 		;;
 	glinet,gl-ar750s-nor|\
